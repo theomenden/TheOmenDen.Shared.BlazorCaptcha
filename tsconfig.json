@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "CommonJS",
+        "lib": [
+          "ES5",
+          "ES6",
+          "esnext",
+          "esnext.asynciterable",
+          "dom"
+        ],
+        "noImplicitAny": true,
+        "noEmitOnError": true,
+        "removeComments": true,
+        "sourceMap": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "incremental": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "lib"
+      },
+      "compileOnSave": true,
+      "include": ["src"],
+      "exclude": ["node_modules"]
+}
