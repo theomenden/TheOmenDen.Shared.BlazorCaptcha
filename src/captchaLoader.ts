@@ -1,34 +1,9 @@
+import { ICaptchaRenderParameters } from './ICaptchaRenderParameters';
 import { IScriptLoaderOptions } from './IScriptLoaderOptions';
 import { ScriptLoader } from './dynamicScriptLoader';
 import { DotNet } from  "@microsoft/dotnet-js-interop";
 
 declare const grecaptcha: ReCaptchaV2.ReCaptcha;
-
-/**
- * The parameters that can be used to render a captcha.
- */
-export interface ICaptchaRenderParameters {
-    /**
-     * The container to render the captcha in. (Default: "recaptcha_container")
-     */
-     container?: string | HTMLElement;
-     /**
-      * The theme to use for the captcha. (Default: "dark")
-      */
-     theme?: "dark" | "light";
-     /**
-      * The size of the captcha to render. (Default: "compact")
-      */
-     size?: "compact" | "normal" | "invisible";
-     /**
-      * The tabindex of the captcha to render. (Default: 0)
-      */
-     tabindex?: number;
-     /**
-      * The badge location of the captcha to render. (Default: "bottomright")
-      */
-     badge?: "bottomright" | "bottomleft" | "inline";
-};
 
 /**
  * A simple utility that can be used to load a ReCaptcha script tag into your application.
@@ -120,5 +95,15 @@ export class captchaLoader {
     });
     
     await dotNetObjRef.invokeMethodAsync("OnCaptchaRendered", widgetId);  
+    }
+
+    /**
+     * Resets the Captcha Challenge
+     * @param dotNetObjRef the dotnet object reference
+     * @param widgetId the widget id to reset - OPTIONAL
+     */
+    async resetAsync(dotNetObjRef: DotNet.DotNetObject, widgetId?: number): Promise<void> {
+        grecaptcha.reset(widgetId);
+        await dotNetObjRef.invokeMethodAsync("OnCaptchaReset", widgetId);
     }
 }
