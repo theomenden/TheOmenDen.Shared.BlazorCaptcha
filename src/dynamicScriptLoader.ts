@@ -1,11 +1,4 @@
-export interface IScriptLoaderOptions {
-    id?: string;
-    isAsync?: boolean;
-    isDeferred?: boolean;
-    appendedTo?: "head" | "body";
-    maxRetries?: number;
-    retryInterval?: number;
-}
+import { IScriptLoaderOptions } from "./IScriptLoaderOptions";
 
 interface IScriptLoaderContract {
     /**
@@ -120,8 +113,3 @@ export class ScriptLoader implements IScriptLoaderContract {
     }
 }
 
-declare global {
-    interface Window {
-        scriptLoader: ScriptLoader;
-    }
-}

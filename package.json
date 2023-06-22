@@ -1,14 +1,21 @@
 {
   "devDependencies": {
-    "@microsoft/dotnet-js-interop": "^7.0.7",
+    "@webpack-cli/generators": "^3.0.7",
     "eslint": "^8.43.0",
-    "typescript": "^5.1.3"
+    "ts-loader": "^9.4.3",
+    "typescript": "^5.1.3",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4"
   },
   "name": "theomenden.shared.blazorcaptcha",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:Release",
+    "build:Release": "webpack --mode production",
+    "build:Debug": "webpack --mode development",
+    "watch": "webpack --watch --mode development",
+    "lint": "eslint src/**/*.ts"
   },
   "keywords": [
     "blazor",
@@ -17,5 +24,9 @@
   ],
   "author": "Alu - The Omen Den",
   "license": "ISC",
-  "description": "A simple ReCaptcha plugin for Blazor Applications allowing for the loading, executing, and rendering of ReCaptcha provided by Google"
+  "description": "A simple ReCaptcha plugin for Blazor Applications allowing for the loading, executing, and rendering of ReCaptcha provided by Google",
+  "dependencies": {
+    "@microsoft/dotnet-js-interop": "^7.0.7",
+    "@types/grecaptcha": "^3.0.4"
+  }
 }
